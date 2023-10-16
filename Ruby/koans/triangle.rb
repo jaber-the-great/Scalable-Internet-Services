@@ -15,6 +15,22 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+
+  premiter = a + b + c
+  longest_side = [a, b, c].max
+  if a <= 0 || b <= 0 || c <= 0
+    raise TriangleError
+
+  elsif premiter <= longest_side *2
+    raise TriangleError
+  elsif a == b && b == c 
+    return :equilateral
+  elsif (a != b) && (a != c) && (b != c)
+    return :scalene
+  else
+    return :isosceles
+  end
+
 end
 
 # Error class used in part 2.  No need to change this code.

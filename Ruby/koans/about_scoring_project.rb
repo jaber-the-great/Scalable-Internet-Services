@@ -31,7 +31,30 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  points = 0
+
+  # Use hashmap to find the frequency of each dice
+  counts = Hash.new(0)
+  dice.each { |die| counts[die] += 1 }
+
+  # Calculate points based on the counts
+  counts.each do |number, count|
+    if count >= 3
+      if number == 1
+        points += 1000 
+      else
+        points += number * 100
+      end
+    end
+  end
+
+  # Handle the special cases for 1 and 5
+  points += counts[1] % 3 * 100
+  points += counts[5] % 3 * 50
+
+  return points
 end
+
 
 class AboutScoringProject < Neo::Koan
   def test_score_of_an_empty_list_is_zero
