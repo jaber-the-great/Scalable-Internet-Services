@@ -21,7 +21,6 @@ class AboutAsserts < Neo::Koan
   def test_assert_equality
     expected_value = 2
     actual_value = 1 + 1
-
     assert expected_value == actual_value
   end
 
@@ -30,6 +29,7 @@ class AboutAsserts < Neo::Koan
     expected_value = 2
     actual_value = 1 + 1
 
+    # Assert equal gives a message like expected this but got that and is helpful to debug
     assert_equal expected_value, actual_value
   end
 

@@ -5,7 +5,10 @@ class AboutSymbols < Neo::Koan
     symbol = :ruby
     assert_equal true, symbol.is_a?(Symbol)
   end
-
+  # In Ruby, symbols are a particular data type that are immutable and 
+  # represent names or internal identifiers. They are often used as identifiers 
+  # or labels for things within a program, such as method names or keys in hashes
+  
   def test_symbols_can_be_compared
     symbol1 = :a_symbol
     symbol2 = :a_symbol
@@ -100,4 +103,5 @@ class AboutSymbols < Neo::Koan
   # THINK ABOUT IT:
   #
   # Why is it not a good idea to dynamically create a lot of symbols?
+  # Cause symbols are not garbage collected
 end

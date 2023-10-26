@@ -19,6 +19,9 @@ class AboutArrays < Neo::Koan
 
     array << 333
     assert_equal [1,2,333], array
+
+    array[4] = 6
+    assert_equal [1,2,333,nil,6] , array
   end
 
   def test_accessing_array_elements
@@ -34,7 +37,7 @@ class AboutArrays < Neo::Koan
 
   def test_slicing_arrays
     array = [:peanut, :butter, :and, :jelly]
-
+    # the first one is starting point and the second one is number of elements 
     assert_equal [:peanut], array[0,1]
     assert_equal [:peanut ,:butter], array[0,2]
     assert_equal [:and, :jelly], array[2,2]
@@ -45,6 +48,8 @@ class AboutArrays < Neo::Koan
   end
 
   def test_arrays_and_ranges
+    # The frist one is the beginning of the range and the second one is the end
+    # of the range
     assert_equal Range, (1..5).class
     assert_not_equal [1,2,3,4,5], (1..5)
     assert_equal [1,2,3,4,5], (1..5).to_a
@@ -59,6 +64,7 @@ class AboutArrays < Neo::Koan
     assert_equal [:and, :jelly], array[2..-1]
   end
 
+  # like stack, and top is the last element
   def test_pushing_and_popping_arrays
     array = [1,2]
     array.push(:last)
@@ -70,6 +76,7 @@ class AboutArrays < Neo::Koan
     assert_equal [1,2], array
   end
 
+  # like stack, top is the first element 
   def test_shifting_arrays
     array = [1,2]
     array.unshift(:first)

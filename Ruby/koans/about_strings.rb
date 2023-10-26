@@ -91,6 +91,7 @@ EOS
     assert_equal "World", there
   end
 
+  # So important, different from appending with the + 
   def test_the_shovel_operator_modifies_the_original_string
     original_string = "Hello, "
     hi = original_string
@@ -120,7 +121,7 @@ EOS
   end
 
   def test_single_quotes_sometimes_interpret_escape_characters
-    string = '\\\''
+    string = '\\\''  # = \'
     assert_equal 2, string.size
     assert_equal "\\'", string
   end
@@ -157,6 +158,7 @@ EOS
 
   in_ruby_version("1.8") do
     def test_in_older_ruby_single_characters_are_represented_by_integers
+      # Value of char dereferenced by ?, it means it is a char not a variable
       assert_equal 97, ?a
       assert_equal true, ?a == 97
 
@@ -179,6 +181,8 @@ EOS
 
   def test_strings_can_be_split_with_different_patterns
     string = "the:rain:in:spain"
+    # Can define the deliminator inside "" or '' like:
+    # words = string.split(":")
     words = string.split(/:/)
     assert_equal ["the","rain","in","spain"], words
 
@@ -196,7 +200,7 @@ EOS
     a = "a string"
     b = "a string"
 
-    assert_equal true, a           == b
+    assert_equal true, a == b
     assert_equal false, a.object_id == b.object_id
   end
 end
