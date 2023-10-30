@@ -21,6 +21,8 @@ def triangle(a, b, c)
   if a <= 0 || b <= 0 || c <= 0
     raise TriangleError
 
+  # In other words, the sum of two smaller sides should be larger than the longest side
+  # premiter - longest_side <= longest_side ==> Not a triangle
   elsif premiter <= longest_side *2
     raise TriangleError
   elsif a == b && b == c 

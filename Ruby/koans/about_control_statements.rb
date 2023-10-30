@@ -18,7 +18,7 @@ class AboutControlStatements < Neo::Koan
     end
     assert_equal :true_value, result
   end
-
+  # So important and different from other langs
   def test_if_statements_return_values
     value = if true
               :true_value
@@ -100,7 +100,7 @@ class AboutControlStatements < Neo::Koan
     end
     assert_equal 3628800, result
   end
-
+  # While also returns value 
   def test_break_statement_returns_values
     i = 1
     result = while i <= 10
@@ -116,6 +116,7 @@ class AboutControlStatements < Neo::Koan
     result = []
     while i < 10
       i += 1
+      # next is uesd to pass over a certain elements. It is like continue method
       next if (i % 2) == 0
       result << i
     end
@@ -131,6 +132,7 @@ class AboutControlStatements < Neo::Koan
     assert_equal ["FISH", "AND", "CHIPS"], result
   end
 
+  # Times is another type of for loop 
   def test_times_statement
     sum = 0
     10.times do

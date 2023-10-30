@@ -30,6 +30,8 @@ class AboutHashes < Neo::Koan
     # THINK ABOUT IT:
     #
     # Why might you want to use #fetch instead of #[] when accessing hash keys?
+    # The #[] would return nil if the element does not exist and results in unexpected
+    # behaviour but with fetch, we can do exception handling
   end
 
   def test_changing_hashes
@@ -83,6 +85,7 @@ class AboutHashes < Neo::Koan
     assert_equal 1, hash1[:one]
     assert_equal nil, hash1[:two]
 
+    # "dos" would be the default value of every hash created(instead of nil)
     hash2 = Hash.new("dos")
     hash2[:one] = 1
 
@@ -90,7 +93,16 @@ class AboutHashes < Neo::Koan
     assert_equal "dos", hash2[:two]
   end
 
+
+
+  # All of the default values are the same object, it is not like it creats a default
+  # value object and assign it to the newly created hash key
   def test_default_value_is_the_same_object
+    #The misconception here is that Hash.new([]) is expected to create a new empty
+    # array as a default value for each key in the hash. However, that's not how it
+    # works. When you use Hash.new([]), you're actually creating a single, shared 
+    #array that serves as the default value for all keys in the hash. This can lead
+    # to unexpected behavior because all keys share the same array as their value.
     hash = Hash.new([])
 
     hash[:one] << "uno"
@@ -103,6 +115,7 @@ class AboutHashes < Neo::Koan
     assert_equal true, hash[:one].object_id == hash[:two].object_id
   end
 
+  # In this way (using block), each key would have it's own default value 
   def test_default_value_with_block
     hash = Hash.new {|hash, key| hash[key] = [] }
 
@@ -114,6 +127,7 @@ class AboutHashes < Neo::Koan
     assert_equal [], hash[:three]
   end
 
+  # Changing the defualt value
   def test_default_value_attribute
     hash = Hash.new
 

@@ -20,7 +20,7 @@ class AboutConstants < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  # Also the way to define nested class
   class Animal
     LEGS = 4
     def legs_in_animal
@@ -39,7 +39,7 @@ class AboutConstants < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  # Also the way to define subclass
   class Reptile < Animal
     def legs_in_reptile
       LEGS
@@ -68,6 +68,7 @@ class AboutConstants < Neo::Koan
 
   # QUESTION: Which has precedence: The constant in the lexical scope,
   # or the constant from the inheritance hierarchy?
+  #  The constant in the lexical scope
 
   # ------------------------------------------------------------------
 

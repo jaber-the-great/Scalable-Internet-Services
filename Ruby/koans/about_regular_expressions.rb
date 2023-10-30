@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutRegularExpressions < Neo::Koan
   def test_a_pattern_is_a_regular_expression
+    # just like "" is used to define string, / / is used to define regex
     assert_equal Regexp, /pattern/.class
   end
 
@@ -17,6 +18,7 @@ class AboutRegularExpressions < Neo::Koan
   # ------------------------------------------------------------------
 
   def test_question_mark_means_optional
+    # Optional about the prevouis char before ?
     assert_equal "ab", "abbcccddddeeeee"[/ab?/]
     assert_equal "a", "abbcccddddeeeee"[/az?/]
   end
@@ -32,7 +34,7 @@ class AboutRegularExpressions < Neo::Koan
 
     # THINK ABOUT IT:
     #
-    # When would * fail to match?
+    # When would * fail to match? 
   end
 
   # THINK ABOUT IT:
@@ -147,6 +149,7 @@ class AboutRegularExpressions < Neo::Koan
 
   # ------------------------------------------------------------------
 
+  # So Importanat (the following three)
   def test_scan_is_like_find_all
     assert_equal ["one", "two", "three"], "one two-three".scan(/\w+/)
   end

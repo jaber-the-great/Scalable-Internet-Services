@@ -27,6 +27,11 @@ class AboutIteration < Neo::Koan
     assert_equal true, [].methods.include?(as_name(:each))
   end
 
+  
+# In Ruby, the |variable| syntax is often used to define a block parameter, which allows 
+# you to pass variables or values into a block of code. Blocks are 
+# commonly used in Ruby for iterating over collections, defining custom behavior, and more.
+
   def test_iterating_with_each
     array = [1, 2, 3]
     sum = 0
@@ -53,16 +58,18 @@ class AboutIteration < Neo::Koan
     assert_equal 6, sum
   end
 
+  # Good for array modification, map and collect are useful and important 
   def test_collect_transforms_elements_of_an_array
     array = [1, 2, 3]
     new_array = array.collect { |item| item + 10 }
     assert_equal [11, 12, 13], new_array
 
-    # NOTE: 'map' is another name for the 'collect' operation
+  # NOTE: 'map' is another name for the 'collect' operation
     another_array = array.map { |item| item + 10 }
     assert_equal [11, 12, 13], another_array
   end
 
+  # Select and finall are the same and useful
   def test_select_selects_certain_items_from_an_array
     array = [1, 2, 3, 4, 5, 6]
 
@@ -79,7 +86,9 @@ class AboutIteration < Neo::Koan
 
     assert_equal "Clarence", array.find { |item| item.size > 4 }
   end
-
+  # In Ruby, the inject method, also known as reduce, is used to accumulate values from an 
+  # enumerable (e.g., an array or a range) into a single result.
+  # The value in the paranthesis is the initial value 
   def test_inject_will_blow_your_mind
     result = [2, 3, 4].inject(0) { |sum, item| sum + item }
     assert_equal 9, result
@@ -88,7 +97,8 @@ class AboutIteration < Neo::Koan
     assert_equal 24, result2
 
     # Extra Credit:
-    # Describe in your own words what inject does.
+    # Describe in your own words what inject does. Injects is used for doing the same operation trhough the 
+    # entire array and getting the final result (like sum, product, subtract etc ) in a variable. 
   end
 
   def test_all_iteration_methods_work_on_any_collection_not_just_arrays
@@ -118,5 +128,7 @@ class AboutIteration < Neo::Koan
   #   # code to read 'file'
   #
   # When you get to the "AboutSandwichCode" koan, recheck your answer.
-
+  # The first code is a better practice since: it would automatically close the file,
+  # has better performance and has automatic exception handling
+  # 
 end

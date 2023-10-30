@@ -5,6 +5,10 @@ class AboutExceptions < Neo::Koan
   class MySpecialError < RuntimeError
   end
 
+  # In Ruby, the term "ancestor" typically refers to a class or module from which another
+  # class or module inherits or includes methods and attributes. An ancestor is a higher-level 
+  # class or module in the inheritance hierarchy.
+
   def test_exceptions_inherit_from_Exception
     assert_equal RuntimeError, MySpecialError.ancestors[1]
     assert_equal StandardError, MySpecialError.ancestors[2]
@@ -15,7 +19,9 @@ class AboutExceptions < Neo::Koan
   def test_rescue_clause
     result = nil
     begin
+    # The fail statement raises an exception with the message "Oops." In Ruby, fail and raise are used to generate exceptions explicitly.
       fail "Oops"
+    # assigns the exception object to the variable ex
     rescue StandardError => ex
       result = :exception_handled
     end
@@ -44,6 +50,7 @@ class AboutExceptions < Neo::Koan
     assert_equal "My Message", ex.message
   end
 
+  # enuser is something like finally in try catch statements and alw
   def test_ensure_clause
     result = nil
     begin
