@@ -1,6 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutBlocks < Neo::Koan
+  # yield is a keyword used within a method to call a block of code that was passed as an argument to that method. 
+  #It allows you to execute code in the context of the method while 
+  #providing flexibility to customize the behavior of the method by passing different blocks of code as arguments.
+  # def say_hello
+  #   puts "Hello, this is before the yield."
+  #   yield if block_given?
+  #   puts "Hello, this is after the yield."
+  # end
+  
+  # say_hello do
+  #   puts "This is the code inside the block passed to say_hello."
+  # end
+  
   def method_with_block
     result = yield
     result
@@ -21,7 +34,7 @@ class AboutBlocks < Neo::Koan
   def method_with_block_arguments
     yield("Jim")
   end
-
+  # The argument here would be the return value of the method 
   def test_blocks_can_take_arguments
     method_with_block_arguments do |argument|
       assert_equal "Jim", argument
@@ -65,7 +78,8 @@ class AboutBlocks < Neo::Koan
     method_with_block { value = :modified_in_a_block }
     assert_equal :modified_in_a_block, value
   end
-
+  # The use of lambda is important
+  # Can't pass several values 
   def test_blocks_can_be_assigned_to_variables_and_called_explicitly
     add_one = lambda { |n| n + 1 }
     assert_equal 11, add_one.call(10)
@@ -73,7 +87,7 @@ class AboutBlocks < Neo::Koan
     # Alternative calling syntax
     assert_equal 11, add_one[10]
   end
-
+  # Insteasd of function calling function to preprocess the input, it is using block to do that!
   def test_stand_alone_blocks_can_be_passed_to_methods_expecting_blocks
     make_upper = lambda { |n| n.upcase }
     result = method_with_block_arguments(&make_upper)

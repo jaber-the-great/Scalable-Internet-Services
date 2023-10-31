@@ -149,12 +149,15 @@ class AboutPatternMatching < Neo::Koan
     end
 
     def deconstruct
+      # The & is a safe navigation operator. it is used to ensure split method is colled only if data is not nil.
+      # If data is nil, the deconstruct method would return nil without attempting to call split.
       @data&.split('')
     end
   end
 
   def array_pattern(deconstructible)
     case deconstructible
+    # It would consider a match were it starts with a, ends with d and has some stuff in between
     in 'a', *res, 'd'
       res
     else
@@ -198,6 +201,7 @@ class AboutPatternMatching < Neo::Koan
   end
 
   # we can write it even shorter
+  # It is a specail case and special syntax. Can be very useful
   def hash_pattern_with_sugar(deconstructible_as_hash)
     case deconstructible_as_hash
     in a:, b:

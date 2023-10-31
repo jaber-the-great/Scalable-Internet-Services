@@ -94,6 +94,7 @@ class AboutSandwichCode < Neo::Koan
 
   # ------------------------------------------------------------------
 
+  # Open works the same as file sandwitch 
   def count_lines3(file_name)
     open(file_name) do |file|
       count = 0

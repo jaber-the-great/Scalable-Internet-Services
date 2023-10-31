@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 class AboutMessagePassing < Neo::Koan
 
   class MessageCatcher
+    # The question mark at the end of the method name means that the method returns a boolean value
     def caught?
       true
     end
@@ -13,7 +14,7 @@ class AboutMessagePassing < Neo::Koan
 
     assert mc.caught?
   end
-
+  # Invoke methods by sending message --> Different from other languages
   def test_methods_can_be_invoked_by_sending_the_message
     mc = MessageCatcher.new
 
@@ -36,6 +37,7 @@ class AboutMessagePassing < Neo::Koan
     # THINK ABOUT IT:
     #
     # Why does Ruby provide both send and __send__ ?
+    # It is for flexibility and avoiding potential conflicts with user-defined methods
   end
 
   def test_classes_can_be_asked_if_they_know_how_to_respond
@@ -84,6 +86,10 @@ class AboutMessagePassing < Neo::Koan
     assert_match(/foobar/, exception.message)
   end
 
+  # In Ruby, method_missing is a special method that is invoked when an object receives a message (i.e., a method call) 
+  # that it doesn't understand or that is not explicitly defined for that object. 
+  # This method allows you to handle method calls that would otherwise result in a "NoMethodError."
+  
   def test_calling_method_missing_causes_the_no_method_error
     typical = TypicalObject.new
 

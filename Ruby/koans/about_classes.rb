@@ -11,6 +11,7 @@ class AboutClasses < Neo::Koan
 
   # ------------------------------------------------------------------
 
+  # In Ruby, the @ symbol is used to declare and access instance variables within a class.
   class Dog2
     def set_name(a_name)
       @name = a_name
@@ -25,6 +26,7 @@ class AboutClasses < Neo::Koan
     assert_equal [:@name], fido.instance_variables
   end
 
+  # Instance variable are private by default
   def test_instance_variables_cannot_be_accessed_outside_the_class
     fido = Dog2.new
     fido.set_name("Fido")
@@ -39,6 +41,7 @@ class AboutClasses < Neo::Koan
     end
   end
 
+  # Ruby has default function for getting the instance variable 
   def test_you_can_politely_ask_for_instance_variable_values
     fido = Dog2.new
     fido.set_name("Fido")
@@ -55,7 +58,7 @@ class AboutClasses < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  # Defining get function
   class Dog3
     def set_name(a_name)
       @name = a_name
@@ -73,7 +76,10 @@ class AboutClasses < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  # attr_reader is a Ruby method that is used to automatically create a 
+  # read-only accessor (getter method) for an instance variable in a class.
+  # It provides a convenient way to retrieve the values of instance 
+  # variables without the need to write custom getter methods for each of them.
   class Dog4
     attr_reader :name
 
@@ -86,12 +92,12 @@ class AboutClasses < Neo::Koan
   def test_attr_reader_will_automatically_define_an_accessor
     fido = Dog4.new
     fido.set_name("Fido")
-
+    # Using attr_reader to get the name
     assert_equal "Fido", fido.name
   end
 
   # ------------------------------------------------------------------
-
+  # Both set and get method for the instance variable
   class Dog5
     attr_accessor :name
   end
@@ -105,7 +111,9 @@ class AboutClasses < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  # Initialize fucntion to provide intial value for instance variable 
+  # It would be like constructore and the lack of enough argument for 
+  # creating new instance would raise error
   class Dog6
     attr_reader :name
     def initialize(initial_name)
@@ -177,6 +185,7 @@ class AboutClasses < Neo::Koan
     assert_equal "<Dog named 'Fido'>", fido.inspect
   end
 
+  # Important
   def test_all_objects_support_to_s_and_inspect
     array = [1,2,3]
     

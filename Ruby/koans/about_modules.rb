@@ -19,6 +19,13 @@ class AboutModules < Neo::Koan
 
   # ------------------------------------------------------------------
 
+  # In Ruby, a module is a way to encapsulate methods, classes, 
+  # and constants. Modules are similar to classes but cannot be instantiated. 
+  # They serve several purposes in the Ruby programming language:
+  # namespace and code reusability and mixin. 
+  # A mixin is simply adding access to multiple modules 
+  # within a Class. Since Ruby does not support multiple 
+  # inheritance, we can use multiple Modules to mix into -read Mixin- a subclass
   class Dog
     include Nameable
 

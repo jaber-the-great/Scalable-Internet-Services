@@ -49,11 +49,12 @@ class AboutJavaInterop < Neo::Koan
     assert_equal __, java_string.toLowerCase
   end
 
+ 
   def test_jruby_provides_snake_case_versions_of_java_methods
     java_string = JString.new("A Java String")
     assert_equal __, java_string.to_lower_case
   end
-
+  # It is important
   def test_jruby_provides_question_mark_versions_of_boolean_methods
     java_string = JString.new("A Java String")
     assert_equal __, java_string.endsWith("String")

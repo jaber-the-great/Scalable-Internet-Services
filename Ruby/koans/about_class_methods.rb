@@ -26,6 +26,7 @@ class AboutClassMethods < Neo::Koan
     assert Dog.methods.size > 0
   end
 
+  # Very different than many languages
   def test_you_can_define_methods_on_individual_objects
     fido = Dog.new
     def fido.wag
@@ -57,7 +58,7 @@ class AboutClassMethods < Neo::Koan
   def Dog2.wag
     :class_level_wag
   end
-
+  
   def test_since_classes_are_objects_you_can_define_singleton_methods_on_them_too
     assert_equal :class_level_wag, Dog2.wag
   end
