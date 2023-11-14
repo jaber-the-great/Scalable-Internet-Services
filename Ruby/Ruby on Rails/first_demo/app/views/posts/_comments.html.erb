@@ -1,0 +1,9 @@
+<h2>Comments</h2>
+
+<div id="comments">
+    <%# Expands to redner partial: "comments/comment", collection: post.comments %>
+    <%# This would render all the comments belong to this post %>
+    <%= render post.comments %>
+</div>
+
+<%= render "comments/new" , post: post%>
