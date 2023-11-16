@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
 
   def create
     # Takes the parameters from the form
-      @post.comments.create! params.required(:comment).permit(:content)
+      comment = @post.comments.create! params.required(:comment).permit(:content)
+      # Deliver later dispatches the mail delivery from html loading
+      # which results in much faster UI
+      CommentsMailer.submitted(comment).deliver_later
       redirect_to @post
   end
 
